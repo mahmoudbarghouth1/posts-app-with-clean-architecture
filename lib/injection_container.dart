@@ -17,14 +17,14 @@ import 'package:http/http.dart' as http;
 final sl = GetIt.instance;
 Future<void> init() async {
   //http
-  sl.registerLazySingleton (() => http.Client);
+  sl.registerLazySingleton(() => http.Client);
   //connectionchaker
   sl.registerLazySingleton<InternetConnectionChecker>(
     () => InternetConnectionChecker.createInstance(),
   );
   //network
   sl.registerLazySingleton<NetworkInfo>(
-    () => NetworkInfoImpl(connectionChecer: sl()),
+    () => NetworkInfoImpl(connectionChecker: sl()),
   );
   // sharedpreferenced
   final sharedPreferences = await SharedPreferences.getInstance();
